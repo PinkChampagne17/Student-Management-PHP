@@ -12,6 +12,7 @@
 <body>
     <div class="container">
       <h1>登录</h1>
+
       <form action="" method="POST">
         <div class="form-group">
           <label>用户名：</label>
@@ -23,6 +24,7 @@
         </div>
         <button type="submit" class="btn btn-primary">登录</button>
       </form>
+
     </div>
 </body>
 <?php
@@ -48,7 +50,9 @@
   if ($result->num_rows > 0) {
       $row = $result->fetch_assoc();
       $id = $row['id'];
+
       setcookie("id", $id, time() + 86400);
+      
       alert('登录成功');
       href('./home.php');
   }

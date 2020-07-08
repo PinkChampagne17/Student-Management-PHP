@@ -49,7 +49,7 @@
           <br>
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="sex" value="男" <?php if ($sex == '男') echo "checked" ?>>
-            <label class="form-check-label" >男</label>
+            <label class="form-check-label">男</label>
           </div>
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="sex" value="女" <?php if ($sex == '女') echo "checked" ?>>
@@ -72,8 +72,7 @@
     }  
 
     require './connect_db.php';
-    require './until.php';
-  
+
     $id = $_POST['id'];
     $sid = $_POST['sid'];
     $name = $_POST['name'];
@@ -83,6 +82,7 @@
     $conn->query("update student set sid=$sid, name='$name', age=$age, sex='$sex' where id=$id");
     $conn->close();
 
+    require './until.php';
     
     alert('修改成功');
     href('./home.php');

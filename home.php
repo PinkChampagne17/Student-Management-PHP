@@ -1,4 +1,5 @@
 <?php
+
     require './connect_db.php';
 
     $id = $_COOKIE['id'];
@@ -32,10 +33,20 @@
     </style>
 </head>
 <body>
-    <span><?php echo $uname ?></span>
-    <a href="./logout.php" class="text-right">注销</a>
+    
     <div class="container table-responsive text-center">
+        <div class="float-left">
+            <span> <?php echo $uname ?> </span>
+            <a href="./logout.php" class="text-right">注销</a>
+        </div>
+
         <h1>学生列表</h1>
+        
+        <form action="" method="POST">
+            <input class="form-control" style="display: inline-block; width: auto;" name="search">
+            <button class="btn btn-primary" type="submit">搜索</button>
+        </form>
+
         <table class="table table-hover" border="1">
             <thead class="thead-dark">
                 <tr>
@@ -47,11 +58,17 @@
                 </tr>
             </thead>
             <tbody>
-                <?php
-                    $sql = "SELECT id, sid, name, age, sex FROM student where uid=$id";
-                    $result = $conn->query($sql);
 
-                    require './until.php';
+                <?php
+
+                    $sql = "SELECT id, sid, name, age, sex FROM student where uid=$id";
+                    
+                    if (isset($_POST['search'])) {
+                        $s = $_POST['search'];
+                        $sql = "$sql and (sid='$s' or name like '%$s%' or age='$s' or sex='$s')";
+                    }
+
+                    $result = $conn->query($sql);
                      
                     if ($result->num_rows > 0) {
                         while($row = $result->fetch_assoc()) {
@@ -92,8 +109,10 @@
                         echo "<tr><td colspan='5'>目前还没有添加学生</td></tr>";
                     }
 
+                    $conn->close();
 
                 ?>
+
             </tbody>
         </table>
         <button
@@ -106,6 +125,3 @@
     </div>
 </body>
 </html>
-<?php
-    $conn->close();
-?>
