@@ -5,7 +5,7 @@ CREATE TABLE user (
    id int auto_increment primary key,
    uname varchar(20) not null,
    pwd varchar(20) not null
-);
+)default charset=utf8;
 
 create table student (
     id int primary key auto_increment,
@@ -15,4 +15,4 @@ create table student (
     sex enum('男', '女', '其他') not null,
     uid int not null,
     FOREIGN KEY(uid) REFERENCES user(id)
-)
+)default charset=utf8;

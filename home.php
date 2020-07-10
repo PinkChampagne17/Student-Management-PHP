@@ -43,6 +43,7 @@
     <div class="container table-responsive text-center shadow-lg">
         <div class="float-left">
             <span> <?php echo $uname ?> </span>
+            <a href="./user.php" class="text-right">个人中心</a>
             <a href="./logout.php" class="text-right">注销</a>
         </div>
 
