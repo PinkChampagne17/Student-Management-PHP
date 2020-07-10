@@ -16,28 +16,24 @@
         body {
             color: white;
             padding: 20px;
-            background: url(./img/bg.gif) repeat center top;
+            background: url(./img/bg.jpg) repeat center top;
+            margin-top: 10%;
         }
-        div {
-            margin-bottom: 20px;
+        button {
+            margin: 10px;
         }
         .title {
             font-size:  60px;
             text-shadow: 2px 2px 3px #000000;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="row align-items-start">
-            <div class="col text-center title">学生管理系统</div>
-        </div>
-        <div class="row align-items-end">
-            <button class="btn btn-primary col" onclick="location.href='./register.php'">注册</button>
-        </div>
-        <div class="row align-items-end">
-            <button class="btn btn-success col" onclick="location.href='./login.php'">登录</button>
-        </div>
+        <div class="col text-center title">学生管理系统</div>
+        <button class="btn btn-primary col" onclick="location.href='./register.php'">注册</button>
+        <button class="btn btn-success col" onclick="location.href='./login.php'">登录</button>
     </div>
 </body>
 </html>

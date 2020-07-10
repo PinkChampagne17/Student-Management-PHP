@@ -26,15 +26,21 @@
     <style>
         body {
             padding: 20px;
+            background: url(./img/bg.jpg) repeat center top;
         }
         div {
             margin-bottom: 20px;
+        }
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
         }
     </style>
 </head>
 <body>
     
-    <div class="container table-responsive text-center">
+    <div class="container table-responsive text-center shadow-lg">
         <div class="float-left">
             <span> <?php echo $uname ?> </span>
             <a href="./logout.php" class="text-right">注销</a>
@@ -42,9 +48,9 @@
 
         <h1>学生列表</h1>
         
-        <form action="" method="POST">
+        <form action="" method="POST" class="float-left" style="margin-bottom: 10px;">
             <input class="form-control" style="display: inline-block; width: auto;" name="search">
-            <button class="btn btn-primary" type="submit">搜索</button>
+            <input type="submit" value="搜索">
         </form>
 
         <table class="table table-hover" border="1">
