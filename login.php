@@ -28,7 +28,7 @@
     </div>
 </body>
 <?php
-  require './until.php';
+  require './untils/functions.php';
 
   if (empty($_POST)) {
     return;
@@ -39,7 +39,7 @@
     return;
   }
 
-  require './connect_db.php';
+  require './untils/connect_db.php';
 
   $uname = $_POST['uname'];
   $pwd = $_POST['pwd'];

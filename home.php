@@ -1,20 +1,14 @@
 <?php
-
-    require './connect_db.php';
-
-    $id = $_COOKIE['id'];
-
-    $sql = "SELECT uname FROM user where id=$id";
-    $result = $conn->query($sql);
+    require 'untils/functions.php';
     
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $uname = $row['uname'];
+    if (!isset($_COOKIE['id'])) {
+        href('./index.php');
+        return;
     }
-    else {
-        echo "获取用户名失败";
-    }
+    
+    require 'untils/connect_db.php';
 
+    $uid = $_COOKIE['id'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -28,9 +22,6 @@
             padding: 20px;
             background: url(./img/bg.jpg) repeat center top;
         }
-        div {
-            margin-bottom: 20px;
-        }
         .container {
             background-color: white;
             border-radius: 10px;
@@ -41,18 +32,41 @@
 <body>
     
     <div class="container table-responsive text-center shadow-lg">
-        <div class="float-left">
-            <span> <?php echo $uname ?> </span>
-            <a href="./user.php" class="text-right">个人中心</a>
-            <a href="./logout.php" class="text-right">注销</a>
-        </div>
 
-        <h1>学生列表</h1>
-        
-        <form action="" method="POST" class="float-left" style="margin-bottom: 10px;">
-            <input class="form-control" style="display: inline-block; width: auto;" name="search">
-            <input type="submit" value="搜索">
-        </form>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <span class="navbar-brand">
+                <?php 
+                    $sql = "SELECT uname FROM user where id=$uid";
+                    $result = $conn->query($sql);
+                    
+                    if ($result->num_rows > 0) {
+                        $row = $result->fetch_assoc();
+                        echo $row['uname'];
+                    }
+                    else {
+                        echo "获取用户名失败";
+                    }
+                ?>
+            </span>
+            
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="./home.php">学生列表</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./user.php">个人中心</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./actions/logout.php">注销</a>
+                    </li>
+                </ul>
+                <form class="form-inline" action="" method="POST">
+                    <input class="form-control mr-sm-2" type="search" placeholder="" aria-label="Search" name="search">
+                    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">搜索</button>
+                </form>
+            </div>
+        </nav>
 
         <table class="table table-hover" border="1">
             <thead class="thead-dark">
@@ -65,10 +79,8 @@
                 </tr>
             </thead>
             <tbody>
-
                 <?php
-
-                    $sql = "SELECT id, sid, name, age, sex FROM student where uid=$id";
+                    $sql = "SELECT id, sid, name, age, sex FROM student where uid=$uid";
                     
                     if (isset($_POST['search'])) {
                         $s = $_POST['search'];
@@ -103,7 +115,7 @@
                                         <button
                                             type=\"button\"
                                             class=\"btn btn-danger\"
-                                            onclick=\"location.href='./delete.php?id=$id'\"
+                                            onclick=\"location.href='./actions/delete.php?id=$id'\"
                                             >
                                             删除
                                         </button>
@@ -113,22 +125,38 @@
                         }
                     }
                     else {
-                        echo "<tr><td colspan='5'>目前还没有添加学生</td></tr>";
+                        echo "<tr><td colspan='5'>没有符合条件的学生 或 目前还没有添加学生</td></tr>";
                     }
 
                     $conn->close();
-
                 ?>
+                <tr>
+                    <form action="./actions/add.php" method="POST">
+                        <td>
+                            <input class="form-control" type="number" name="sid">
+                        </td>
+                        <td>
+                            <input class="form-control" name="name">
+                        </td>
+                        <td>
+                            <input class="form-control" type="number" name="age">
+                        </td>
+                        <td>
+                            <select class="form-control" name="sex">
+                                <option value="男"></option>
+                                <option value="男">男</option>
+                                <option value="女">女</option>
+                                <option value="其他">其他</option>
+                            </select>
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-success">添加新学生</button>
+                        </td>
+                    </form>
+                </tr>
 
             </tbody>
         </table>
-        <button
-            type="button"
-            class="btn btn-success"
-            onclick="location.href='./add.php'"
-            >
-            添加新学生
-        </button>
     </div>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <?php
-    require './until.php';
+    require './untils/functions.php';
 
     if (isset($_COOKIE['id'])) {
         href('./home.php');
