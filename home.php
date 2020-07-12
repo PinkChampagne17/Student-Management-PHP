@@ -24,10 +24,7 @@
                 <a class="nav-link active" href="#">成员国列表</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">添加成员国</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">修改密码</a>
+                <a class="nav-link" href="./add.php">添加成员国</a>
             </li>
         </ul>
         <table class="table table-striped text-center">
@@ -38,26 +35,52 @@
                 <th>加入时间</th>
                 <th>操作</th>
             </tr>
-            <tr>
-                <td>中国</td>
-                <td>北京</td>
-                <td>是</td>
-                <td>114514</td>
-                <td>
-                    <button type="button" class="btn btn-info">编辑</button>
-                    <button type="button" class="btn btn-danger">删除</button>
-                </td>
-            </tr>
-            <tr>
-                <td>美国</td>
-                <td>华盛顿</td>
-                <td>是</td>
-                <td>114515</td>
-                <td>
-                    <button type="button" class="btn btn-info">编辑</button>
-                    <button type="button" class="btn btn-danger">删除</button>
-                </td>
-            </tr>
+            <?php
+                require './connect_mysql.php';
+
+                $sql = "SELECT * FROM country";
+
+                $result = $conn->query($sql);
+                
+                if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        
+                        $id = $row['id'];
+                        $name = $row['name'];
+                        $capital = $row['capital'];
+                        $is = $row['is_security_council'];
+                        $is_disp = $is == 1 ? '是' : '否';
+                        $jt = $row['join_time'];        
+
+                        echo "
+                            <tr>
+                                <td>$name</td>
+                                <td>$capital</td>
+                                <td>$is_disp</td>
+                                <td>$jt</td>
+                                <td>
+                                    <button
+                                        type=\"button\"
+                                        class=\"btn btn-info\"
+                                        onclick=\"location.href='./edit.php?id=$id&name=$name&captial=$capital&is=$is&join_time=$jt'\"
+                                    >编辑</button>
+                                    <button
+                                        type=\"button\"
+                                        class=\"btn btn-danger\"
+                                        onclick=\"location.href='./delete.php?id=$id'\"
+                                    >删除</button>
+                                </td>
+                            </tr>
+                        ";
+                    }
+                }
+                else {
+                    echo "<tr><td colspan='5'>目前还没有成员国</td></tr>";
+                }
+
+                $conn->close();
+            ?>
+            
         </table>
     </div>
 </body>

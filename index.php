@@ -57,7 +57,7 @@
     $id = $_POST['id'];
     $pwd = $_POST['pwd'];
 
-    $sql = "SELECT * FROM admin where uname='$id' and pwd=$pwd";
+    $sql = "SELECT * FROM admin where id='$id' and pwd=$pwd";
     $result = $conn->query($sql);
     
     if ($result->num_rows > 0) {

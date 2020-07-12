@@ -21,50 +21,66 @@
         <h1 class="text-center">联合国亚洲分部管理系统</h1>
         <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a class="nav-link" href="#">成员国列表</a>
+                <a class="nav-link" href="./home.php">成员国列表</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="#">添加成员国</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">修改密码</a>
+                <a class="nav-link active" href="./add.php">添加成员国</a>
             </li>
         </ul>
         <br>
         <div class="container" style="width: 500px;">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="inputGroup-sizing-default">国名</span>
-                </div>
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-              </div>
-    
+            <form action="" method="POST">
               <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="inputGroup-sizing-default">首都</span>
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">国名</span>
+                  </div>
+                  <input name="name" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-              </div>
-              
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <label class="input-group-text" for="inputGroupSelect01">是否为常任理事国</label>
+      
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">首都</span>
+                  </div>
+                  <input name="capital" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
-                <select class="custom-select">
-                  <option value="1" selected>是</option>
-                  <option value="2">否</option>
-                </select>
-              </div>
-    
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="inputGroup-sizing-default">加入时间</span>
+                
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">是否为常任理事国</label>
+                  </div>
+                  <select class="custom-select" name="is">
+                    <option value="1" selected>是</option>
+                    <option value="0">否</option>
+                  </select>
                 </div>
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-              </div>
-
-              <button type="button" class="btn btn-success btn-lg btn-block">添加</button>
+      
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">加入时间</span>
+                  </div>
+                  <input name="join_time" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                </div>
+  
+                <button type="submit" class="btn btn-success btn-lg btn-block">添加</button>
+            </form>
         </div>
     </div>
 </body>
 </html>
+<?php
+  if (empty($_POST)) {
+    return;
+  }
+
+  require './connect_mysql.php';
+
+  $sql = "INSERT INTO country (name, capital, is_security_council, join_time) VALUES ('{$_POST['name']}', '{$_POST['capital']}', {$_POST['is']} , '{$_POST['join_time']}')";
+
+  if ($conn->query($sql) === TRUE) {
+      alert('添加成功');
+      href('../home.php');
+  }
+  else {
+      echo "Error: " . $sql . "<br>" . $conn->error;
+  }
+?>
