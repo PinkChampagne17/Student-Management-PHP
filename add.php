@@ -24,7 +24,7 @@
                 <a class="nav-link" href="#">成员国列表</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">添加成员国</a>
+                <a class="nav-link active" href="#">添加成员国</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">修改密码</a>
@@ -63,7 +63,7 @@
                 <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
               </div>
 
-              <button type="button" class="btn btn-success btn-lg btn-block">修改</button>
+              <button type="button" class="btn btn-success btn-lg btn-block">添加</button>
         </div>
     </div>
 </body>

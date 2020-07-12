@@ -1,2 +1,0 @@
-# Student-Management-PHP
- 
