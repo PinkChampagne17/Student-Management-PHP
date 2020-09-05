@@ -3,7 +3,7 @@
 
 GitHub仓库：https://github.com/PinkChampagne17/Student-Management-PHP
 
-背景图片来源：https://www.pixiv.net/artworks/59440693
+背景图片来源：https://unsplash.com/photos/hes6nUC1MVc
 
 ## 项目截图预览
 ![](https://img2020.cnblogs.com/blog/1981089/202008/1981089-20200820173617003-221244557.png)
