@@ -8,6 +8,10 @@ GitHub仓库：https://github.com/PinkChampagne17/Student-Management-PHP
 ## 项目截图预览
 ![](https://img2020.cnblogs.com/blog/1981089/202008/1981089-20200820173617003-221244557.png)
 ![](https://img2020.cnblogs.com/blog/1981089/202008/1981089-20200820173703084-201000813.png)
+![](./screenshot/个人中心.png)
+![](./screenshot/修改用户名.png)
+![](./screenshot/登录.png)
+![](./screenshot/注册.png)
 
 ## 实现功能
 - 登录
