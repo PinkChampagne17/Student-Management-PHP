@@ -44,7 +44,7 @@
   $uname = $_POST['uname'];
   $pwd = $_POST['pwd'];
 
-  $sql = "SELECT id FROM user where uname='$uname' and pwd=$pwd";
+  $sql = "SELECT id FROM user where uname='$uname' and pwd='$pwd'";
   $result = $conn->query($sql);
   
   if ($result->num_rows > 0) {
