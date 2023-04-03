@@ -55,6 +55,12 @@
                         <a class="nav-link" href="./home.php">学生列表</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="./classinfo.php">班级信息</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./scoreinfo.php">成绩信息</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="./user.php">个人中心</a>
                     </li>
                     <li class="nav-item">
@@ -80,7 +86,7 @@
             </thead>
             <tbody>
                 <?php
-                    $sql = "SELECT id, sid, name, age, sex FROM student where uid=$uid";
+                    $sql = "SELECT id, sid, name, age, sex FROM stu where uid=$uid";
                     
                     if (isset($_POST['search'])) {
                         $s = $_POST['search'];
@@ -150,7 +156,7 @@
                             </select>
                         </td>
                         <td>
-                            <button type="submit" class="btn btn-success">添加新学生</button>
+                            <button type="submit" class="btn btn-success">添加</button>
                         </td>
                     </form>
                 </tr>

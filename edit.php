@@ -24,6 +24,12 @@
                     <a class="nav-link" href="./home.php">学生列表</a>
                 </li>
                 <li class="nav-item">
+                        <a class="nav-link" href="./classinfo.php">班级信息</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./scoreinfo.php">成绩信息</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="./user.php">个人中心</a>
                 </li>
                 <li class="nav-item">
@@ -54,20 +60,8 @@
         <div class="form-group">
           <label>性别：</label>
           <br>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="sex" value="男" <?php if ($sex == '男') echo "checked" ?>>
-            <label class="form-check-label">男</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="sex" value="女" <?php if ($sex == '女') echo "checked" ?>>
-            <label class="form-check-label">女</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="sex" value="其他" <?php if ($sex == '其他') echo "checked" ?>>
-            <label class="form-check-label">其他</label>
-          </div>
+          <input class="form-control" name="sex" value="<?php echo $sex ?>">
         </div>
-
         <button type="submit" class="btn btn-primary">修改</button>
       </form>
     </div>
@@ -86,7 +80,7 @@
     $age = $_POST['age'];
     $sex = $_POST['sex'];
   
-    $conn->query("update student set sid=$sid, name='$name', age=$age, sex='$sex' where id=$id");
+    $conn->query("update stu set sid=$sid, name='$name', age=$age, sex='$sex' where id=$id");
     $conn->close();
 
     require './untils/functions.php';
