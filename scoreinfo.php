@@ -87,7 +87,7 @@
             </thead>
             <tbody>
                 <?php
-                    $sql = "SELECT id,sid,name,sub,score FROM sco where uid=$uid";
+                    $sql = "SELECT id,sid,name,sub,score FROM scoreinfo where uid=$uid";
                     
                     if (isset($_POST['search'])) {
                         $s = $_POST['search'];
