@@ -3,7 +3,7 @@
 
     require '../untils/connect_db.php';
 
-    $conn->query("DELETE FROM sco WHERE id=$id");
+    $conn->query("DELETE FROM scoreinfo WHERE id=$id");
     
     $conn->close();
 
