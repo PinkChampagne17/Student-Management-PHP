@@ -15,7 +15,7 @@
 
   require '../untils/connect_db.php';
 
-  $sql = "INSERT INTO student (sid, name, age, sex, uid) VALUES ($sid, '$name', $age, '$sex', $uid)";
+  $sql = "INSERT INTO stu (sid, name, age, sex, uid) VALUES ($sid, '$name', $age, '$sex', $uid)";
 
   if ($conn->query($sql) === TRUE) {
       href('../home.php');

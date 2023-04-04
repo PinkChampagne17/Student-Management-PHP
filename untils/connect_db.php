@@ -1,6 +1,7 @@
 <?php
     // 创建连接
-    $conn = new mysqli("localhost", "root", "", "student_management", 3306);
+    //输入你自己的的数据库连接:"连接地址"，“登入账号”，“登入密码”，“使用数据库”,端口
+    $conn = new mysqli("", "", "", "", );
 
     $conn->set_charset("utf8");
     

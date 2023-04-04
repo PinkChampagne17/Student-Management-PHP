@@ -1,4 +1,5 @@
 # PHP 学生管理系统
+Other AC,haha I'm G!
 
 一个使用 PHP 实现，功能简单的学生管理系统，刚好够应付课堂作业用。
 
@@ -21,6 +22,9 @@
 - 修改密码
 - 使用 cookie 保持登录状态
 - 对学生的增删查改
+- add some shit（Nope）
+- 对班级的增删查改
+- 对成绩的增删查改
 
 ## 技术栈
 
@@ -40,21 +44,37 @@
 create database student_management;
 use student_management;
 
-CREATE TABLE user (
-   id int auto_increment primary key,
-   uname varchar(20) not null,
-   pwd varchar(20) not null
-)default charset=utf8;
+CREATE TABLE `cs` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `sid` int(20) NOT NULL,
+  `name` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `sc` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `Class` varchar(40) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `uid` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
-create table student (
-    id int primary key auto_increment,
-    sid int not null,
-    name varchar(15) not null,
-    age int not null,
-    sex enum('男', '女', '其他') not null,
-    uid int not null,
-    FOREIGN KEY(uid) REFERENCES user(id)
-)default charset=utf8;
+CREATE TABLE `sco` (
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `sid` int(20) NOT NULL,
+  `name` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `sub` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT '',
+  `score` int(20) DEFAULT NULL,
+  `uid` int(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+CREATE TABLE `stu` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sid` int(11) NOT NULL,
+  `name` varchar(15) NOT NULL,
+  `age` int(11) NOT NULL,
+  `sex` enum('男','女','其他') NOT NULL,
+  `uid` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `uid` (`uid`)
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+
 ```
 
 ## 可以改善的地方
