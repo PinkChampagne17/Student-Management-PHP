@@ -80,7 +80,7 @@
     $sub = $_POST['sub'];
     $score = $_POST['score'];
   
-    $conn->query("update sco set sid=$sid, name='$name', sub='$sub', score=$score where id=$id");
+    $conn->query("update scoreinfo set sid=$sid, name='$name', sub='$sub', score=$score where id=$id");
     $conn->close();
 
     require './untils/functions.php';
