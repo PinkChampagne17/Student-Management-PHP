@@ -15,7 +15,7 @@
 
   require '../untils/connect_db.php';
 
-  $sql = "INSERT INTO cs (sid, name, sc, class, uid) VALUES ($sid, '$name', '$sc', '$class', $uid)";
+  $sql = "INSERT INTO classinfo (sid, name, sc, class, uid) VALUES ($sid, '$name', '$sc', '$class', $uid)";
 
   if ($conn->query($sql) === TRUE) {
       href('../classinfo.php');
