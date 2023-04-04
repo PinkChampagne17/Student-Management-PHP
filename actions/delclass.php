@@ -3,7 +3,7 @@
 
     require '../untils/connect_db.php';
 
-    $conn->query("DELETE FROM cs WHERE id=$id");
+    $conn->query("DELETE FROM classinfo WHERE id=$id");
     
     $conn->close();
 
