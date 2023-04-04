@@ -15,7 +15,7 @@
 
   require '../untils/connect_db.php';
 
-  $sql = "INSERT INTO sco (sid, name, sub ,score, uid) VALUES ($sid, '$name', '$sub', '$score', $uid)";
+  $sql = "INSERT INTO scoreinfo (sid, name, sub ,score, uid) VALUES ($sid, '$name', '$sub', '$score', $uid)";
 
   if ($conn->query($sql) === TRUE) {
       href('../scoreinfo.php');
