@@ -80,7 +80,7 @@
     $sc = $_POST['sc'];
     $class = $_POST['class'];
   
-    $conn->query("update cs set sid=$sid, name='$name', sc='$sc', class='$class' where id=$id");
+    $conn->query("update classinfo set sid=$sid, name='$name', sc='$sc', class='$class' where id=$id");
     $conn->close();
 
     require './untils/functions.php';
