@@ -87,7 +87,7 @@
             </thead>
             <tbody>
                 <?php
-                    $sql = "SELECT id,sid,name,sc,class FROM cs where uid=$uid";
+                    $sql = "SELECT id,sid,name,sc,class FROM classinfo where uid=$uid";
                     
                     if (isset($_POST['search'])) {
                         $s = $_POST['search'];
