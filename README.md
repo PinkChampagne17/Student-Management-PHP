@@ -4,6 +4,9 @@
 
 背景图片来源：https://www.pixiv.net/artworks/59440693
 
+## Forks
+- [RikeyZero/Student-Management-PHP-RikeyZeroVersion](https://github.com/RikeyZero/Student-Management-PHP-RikeyZeroVersion) 在此之上新增了一些新功能
+
 ## 项目截图预览
 
 ![](./screenshot/主页.png)
